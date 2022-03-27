@@ -25,7 +25,7 @@ class TestServiceProvider extends ServiceProvider
                 return new MyClass($app->request->route("param"));
             }
 
-            return new MyClass($parameters['param']);
+           return new MyClass($parameters['param']);
         });
     }
 

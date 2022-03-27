@@ -13,7 +13,8 @@ class TestController extends Controller
         //return response()->json($param);
         $param2 = app(MyClass::class);
         $param3 = app()->make(MyClass::class,["param"=>"anotherValue"]);
-        return response()->json([$param,$param2,$param3]);
+        $param4 = new MyClass("anotherDifferent Value");
+        return response()->json([$param,$param2,$param3,$param4]);
 
     }
 }
