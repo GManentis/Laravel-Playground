@@ -26,7 +26,7 @@ class TestServiceProvider extends ServiceProvider
         $this->app->bind(MyClass::class, function ($app, $parameters) {
             //if we need request object we can simply do $app->request->parameterOfRequest
             if (count($parameters) === 0) {
-                return new MyClass($app->request->route("param"));
+                return new MyClass($app->request->route("param")); //check if route has param
             }
 
             return new MyClass($parameters['param']);
