@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +84,30 @@ Route::group(['prefix' => '/testo/{testo}'], function () {
     Route::get("/hash/{hash}", function ($testo, $hash) {
         return $testo . " " . $hash;
     });
+});
+
+Route::get("/foo-endpoint",function(){
+    if (Auth::guard('api')->check()) {
+        /*
+        This applies in the case of laravel passport api:
+        After we checked with Auth::guard('api')->check() that token exists and is valid (not done with "auth:api" middleware),
+        probably because we use Auth::guard("..")->check(), we can only get logged in user's id with (Case 1)Auth::guard('api')->id() and (Case 2)user's object by Auth::guard('api')->user(). The $request->user()
+        wont work. So the only way to guarantee $request->user() in this case is:
+        (Case1)Get the user object using Auth::guard('api')->id(). Example:
+        $user= User::where('id',Auth::guard()->id())->first(); //and then login with Auth
+        Auth::login($user);
+        //Then $request->user() will be available
+        (Case2) Auth::login using Auth::guard('api')->user(). Example:
+        Auth::login(Auth::guard('api')->user());
+        //only then we can use $request->user() safely
+        */
+
+        /*
+            My login for auth check
+        */
+    }
+
+    /*
+    else case
+    */
 });
