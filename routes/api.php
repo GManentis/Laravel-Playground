@@ -86,7 +86,7 @@ Route::group(['prefix' => '/testo/{testo}'], function () {
     });
 });
 
-Route::get("/foo-endpoint",function(){
+Route::get("/foo-endpoint", function () {
     if (Auth::guard('api')->check()) {
         /*
         This applies in the case of laravel passport api:
@@ -109,5 +109,11 @@ Route::get("/foo-endpoint",function(){
 
     /*
     else case
+    */
+
+
+    /*
+    Important note
+    If we send formData only post verb is allowed!!This applies to all cases and frameworks
     */
 });
