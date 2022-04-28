@@ -69,6 +69,25 @@ use Illuminate\Support\Facades\Auth;
     return $product;
     */
 
+
+
+/*updating pivot table
+first way example:
+
+$messages  = Message::where('message_id', $id)->get();
+foreach($messages as $message)
+   $message->users()->updateExistingPivot($userId, array('status' => 1), false);
+
+---------------------
+Second way:
+
+$task = $user->goalobjectives()->where(['goal_objective_id'=>$goal_objective_id,'goal_obj_add_id'=>$goal_obj_add_id])->first(); //get the first record
+$task->pivot->goal_objective_id = $new; //change your col to a new value
+$task->pivot->save(); //save
+
+*/
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
