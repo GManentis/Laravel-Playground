@@ -34,7 +34,21 @@ class FooController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        $myAssocArray = ["skill" => "Makis Takis"];
+
+        $skill = new Skill($myAssocArray); // Eloquent accepts associative array if we pass params as constructor
+        //return response()->json($skill); //if we return the result before save we will get the properties without id because no save to db has occured
+        $skill->save();
+        //return response()->json($skill); //if we return the result after save we will get the properties with id as expected
+
+        //$skill->delete(); if we delete the entry and return it, we will still get all the info including id but the entry we no longer be in db
+
+        //Important Note: We either save() or delete()!!! if we save() first and delete() later as expected the entry will be removed
+        //If we delete() and then in next line save() the entry still exists in db
+        //So the eloquent object in either delete() or save() not both!!!
+        return response()->json($skill);
+        */
     }
 
     /**
