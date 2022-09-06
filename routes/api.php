@@ -136,3 +136,8 @@ Route::get("/foo-endpoint", function () {
     If we send formData only post verb is allowed!!This applies to all cases and frameworks
     */
 });
+
+//Check TestMiddleware for notes on middleware
+Route::middleware("test")->get("/test-middleware",function(Request $request){
+    return view("testlogin");
+});
